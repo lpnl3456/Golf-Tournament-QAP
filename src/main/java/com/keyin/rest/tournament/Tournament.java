@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Tournament {
@@ -22,6 +23,15 @@ public class Tournament {
     List<Member> participatingMem;
 
     public Tournament() {
+    }
+    public Tournament(long id, Date startDate, Date endDate, String location, double entryFee, double prizeAmount, List<Member> participatingMem) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.location = location;
+        this.entryFee = entryFee;
+        this.prizeAmount = prizeAmount;
+        this.participatingMem = participatingMem;
     }
 
     public long getId() {
