@@ -5,7 +5,8 @@ import com.keyin.rest.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,4 +66,35 @@ public class TournamentService {
         }
         return null;
     }
+
+    public List<Optional<Tournament>> findTournamentByStartDate(String tournamnetDate) {
+        List<Optional<Tournament>> tournamentsOptional = tournamentRepository.findByStartDate(tournamnetDate);
+        return tournamentsOptional;
+    }
+
+    public List<Optional<Tournament>> findTournamentByLocation(String location) {
+        List<Optional<Tournament>> tournamentsOptional = tournamentRepository.findByLocation(location);
+        return tournamentsOptional;
+    }
+
+    public List<Member> findTournamentMembers(long id) {
+        Optional<Tournament> tournamentOptional = tournamentRepository.findById(id);
+
+        if(tournamentOptional.isEmpty()){
+            return null;
+        }
+
+        Tournament tournaments = tournamentOptional.get();
+        List<Member> memParticapting = new ArrayList<Member>();
+
+        for(Member member: tournaments.getParticipatingMem()){
+            if(!memParticapting.contains(member)){
+                memParticapting.add(member);
+            }
+        }
+
+        return memParticapting;
+    }
+
+
 }

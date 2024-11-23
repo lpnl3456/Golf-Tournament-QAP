@@ -18,12 +18,12 @@ public class Member {
     String email;
     String phoneNum;
     Date startDate;
-    Date duration;
+    String duration;
 
     public Member (){
 
     }
-    public Member(String name, String email, String address, long id, String phoneNum, Date startDate, Date duration) {
+    public Member(String name, String email, String address, long id, String phoneNum, Date startDate, String duration) {
         this.name = name;
         this.email = email;
         this.address = address;
@@ -81,11 +81,11 @@ public class Member {
         this.startDate = startDate;
     }
 
-    public Date getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Date duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
